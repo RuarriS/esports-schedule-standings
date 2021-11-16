@@ -8,10 +8,31 @@
     <!-- <link href="https://cdn.cookielaw.org/scripttemplates/6.23.0/assets/otCommonStyles.css" rel="stylesheet" /> -->
     <link href="https://esports.rocketleague.com/site.css?v=b2f5ecd8427608adca2a9497ce2755f3" rel="stylesheet" />
 <script defer src="main.js"></script></head>
+<style>
+    .wrap {
+        display: flex;
+        flex-flow: row nowrap;
+        justify-content: space-between;
+    }
+    .split {
+        width: 45%;
+    }
+</style>
 <body class="rlcsx zesty_home">
+    <div class="wrap">
+        <div class="split">
+            <h3>Past Matches</h3>
+            <rlcs-past-events></rlcs-past-events>
+        </div>
+        
+        <div class="split">
+            <h3>Upcoming Events</h3>
+            <rlcs-schedule  ></rlcs-schedule>
+        </div>
+    </div>
     
-    <rlcs-past-events></rlcs-past-events>
-    <!-- <rlcs-schedule  ></rlcs-schedule> -->
+    
+    
 
     
         <!-- <rlcs-standings></rlcs-standings> -->
