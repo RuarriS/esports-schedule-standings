@@ -85,7 +85,7 @@ class rlcsSchedule extends LitElement {
             display: block;
             background: rgb(33,69,112);
             background: linear-gradient(90deg, rgba(33,69,112,1) 0%, rgba(33,69,112,1) 0%, rgba(53,104,159,1) 100%);
-            font-size: 3vw;
+            font-size: 2.5vw;
         }
         ol {
             list-style: none;
@@ -131,7 +131,7 @@ class rlcsSchedule extends LitElement {
 
         }
         .learn-button-wrap {
-            width: 20%;
+            width: 5em;
         }
         .learn-button-inner {
             text-align: center;

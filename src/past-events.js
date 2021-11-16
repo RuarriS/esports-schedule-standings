@@ -151,7 +151,7 @@ class rlcsPastEvents extends LitElement {
             display: block;
             background: rgb(33,69,112);
             background: linear-gradient(90deg, rgba(33,69,112,1) 0%, rgba(33,69,112,1) 0%, rgba(53,104,159,1) 100%);
-            font-size: 3vw;
+            font-size: 1.2vw;
         }
         ol {
             list-style: none;
@@ -162,7 +162,7 @@ class rlcsPastEvents extends LitElement {
             padding: 2em 0 1em 0;
             display: flex;
             flex-flow: row wrap;
-            align-items: center;
+            align-items: center;s
         }
 
         li + li {
@@ -208,15 +208,15 @@ class rlcsPastEvents extends LitElement {
             display: inline-flex;
             flex-flow: row nowrap;
             flex-grow: 3;
+            margin-left: 2em;
         }
        
         .team {
             display: inline-flex;
             flex-flow: row nowrap;
             align-items: center;
-            flex-basis: 40%;
-            flex-grow: 2;
-
+            flex: 1 1 0;
+            width: 0;
             opacity: 0.5;
         }
         
@@ -225,8 +225,13 @@ class rlcsPastEvents extends LitElement {
             opacity: 1;
         }
         
+        
+        .team.team-one {
+            justify-content: flex-end;
+            text-align: right;
+        }
         .team img, .team .placeholder {
-            width: 2em;
+            width: 2.5em;
             height: auto;
             filter: saturate(0);
             margin: 0 0.5em;
@@ -234,29 +239,28 @@ class rlcsPastEvents extends LitElement {
             flex-shrink: 0;
         }
         .team h4 {
-            word-wrap: normal;
-        }
-        .team.team-one {
-            justify-content: flex-end;
-            text-align: right;
-            padding-left: 2em;
-            flex-basis: calc(40% - 2em); //Accounts for Date on left side
+            width: calc(100% - 3em);
+            word-wrap: break-word;
+
         }
         .teams-wrap span {
             font-size: 1.5em;
             font-family: "Bourgeois W00 Medium","Arial Regular",Arial,sans-serif;
             text-transform: uppercase;
             font-style: italic;
-            font-width: 100;
+
             color: #fff;
             flex-basis: 10%;
             text-align: center;
+            flex-shrink: 10;
+            flex-grow: 0;
         }
         .score-wrap {
             width: 100%;
             display: inline-flex;
             justify-content: center;
-            //padding-left: 2em; // To account for the offset in the first line because of the date.
+            padding-left: 2em; 
+            
         }
         .score {
             font-size: 1.25em;
