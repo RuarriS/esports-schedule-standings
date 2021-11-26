@@ -16,18 +16,18 @@ class rlcsSchedule extends LitElement {
     constructor() {
         super();
 
-        this.events = [
-            {
-                id: '',
-                name: '',
-                startAt: new Date(),
-                tournament: {
-                    id: "",
-                    name: '',
-                    slug: ''
-                }
-            }
-        ];
+        // this.events = [
+        //     {
+        //         id: '',
+        //         name: '',
+        //         startAt: new Date(),
+        //         tournament: {
+        //             id: "",
+        //             name: '',
+        //             slug: ''
+        //         }
+        //     }
+        // ];
 
     }
     async firstUpdated() {
@@ -152,7 +152,9 @@ class rlcsSchedule extends LitElement {
 
         <section class="rlcsx">
             <ol>
-                ${this.events ? this.events.map( (event, index) => {
+                ${!this.events ? 
+                html`` 
+                : this.events.map( (event, index) => {
                     let startsAt = new Date(event.startAt * 1000);
                     return html`
                 <li class="animate__animated animate__slideInUp" style="--animation-delay: ${index + 5}s;">
@@ -169,7 +171,7 @@ class rlcsSchedule extends LitElement {
                         
                 
                 </li>
-                `}) : ''}
+                `})}
             </ol>
         </section>
         

@@ -17,41 +17,41 @@ class rlcsPastEvents extends LitElement {
     constructor() {
         super();
 
-        this.sets = [
-            {
-                winnerId: '',
-                startedAt: new Date(),
-                games: [
-                    {
-                        winnerId: "",
-                        selections: [
-                            {
-                                entrant: {
-                                    name: "",
-                                    id: null,
-                                    team: {
-                                        images: [
-                                            { url: ""}
-                                        ]
-                                    }
-                                }
-                            },
-                            {
-                                entrant: {
-                                    name: "",
-                                    id: null,
-                                    team: {
-                                        images: [
-                                            { url: ""}
-                                        ]
-                                    }
-                                }
-                            }
-                        ]
-                    }
-                ]
-            }
-        ];
+        // this.sets = [
+        //     {
+        //         winnerId: '',
+        //         startedAt: new Date(),
+        //         games: [
+        //             {
+        //                 winnerId: "",
+        //                 selections: [
+        //                     {
+        //                         entrant: {
+        //                             name: "",
+        //                             id: null,
+        //                             team: {
+        //                                 images: [
+        //                                     { url: ""}
+        //                                 ]
+        //                             }
+        //                         }
+        //                     },
+        //                     {
+        //                         entrant: {
+        //                             name: "",
+        //                             id: null,
+        //                             team: {
+        //                                 images: [
+        //                                     { url: ""}
+        //                                 ]
+        //                             }
+        //                         }
+        //                     }
+        //                 ]
+        //             }
+        //         ]
+        //     }
+        // ];
 
     }
     async firstUpdated() {
@@ -122,9 +122,13 @@ class rlcsPastEvents extends LitElement {
               }
               `;
     
+            let sets = [];
+
             let data = await graphQLClient.request(query);
     
-            let sets = [];
+            let pageInfo = data.league.events.pageInfo;
+
+            
             data.league.events.nodes.forEach( event => {
                 sets = [...sets, ...event.sets.nodes];
             });
@@ -136,7 +140,7 @@ class rlcsPastEvents extends LitElement {
                 return true
             });
 
-            console.log(sets);
+            // console.log(sets);
     
             return sets;
         } catch(e) {
@@ -317,7 +321,9 @@ class rlcsPastEvents extends LitElement {
 
         <section class="rlcsx">
             <ol>
-                ${this.sets ? this.sets.map( (set, index) => {
+                ${!this.sets ? 
+                html`<li>Loading...</li>` 
+                : this.sets.map( (set, index) => {
                     let startsAt = new Date(set.startAt * 1000);
                     let winnerId = set.winnerId;
                     let team1 = set.games[0].selections[0].entrant;
@@ -363,7 +369,7 @@ class rlcsPastEvents extends LitElement {
                     </div>
                     
                 </li>
-                `}) : ''}
+                `})}
             </ol>
         </section>
         

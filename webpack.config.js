@@ -2,8 +2,6 @@ var path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
-  mode: 'development',
-  
   devServer: {
     static: {
       directory: path.join(__dirname, 'public'),
@@ -11,6 +9,16 @@ module.exports = {
     compress: true,
     port: 9000,
     liveReload: true
+  },
+  entry: {
+    standings: './src/league-standings.js',
+    pastEvents: './src/past-events.js',
+    schedule: './src/schedule.js',
+    main: './src/index.js'
+  },
+  output: {
+    filename: '[name].js',
+    path: __dirname + '/dist',
   },
   module: {
     rules: [
@@ -23,7 +31,8 @@ module.exports = {
   plugins: [
       new HtmlWebpackPlugin({
           title: "Dev",
-          template: "index.html"
+          template: "index.html",
+          chunks: ['main']
       })
   ]
 };
